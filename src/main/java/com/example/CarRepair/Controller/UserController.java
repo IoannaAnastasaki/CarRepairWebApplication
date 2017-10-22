@@ -3,6 +3,7 @@ package com.example.CarRepair.Controller;
 import com.example.CarRepair.Domain.Repair;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,35 +17,41 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    private static final String UserData = "email"; //user email
+    private static final String UserData = "name"; //user email
     private static final String REPAIR_DATA = "repairs";
     private static final String USER = "user";
+
+    @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/userInfo",method = RequestMethod.GET)
     public String userInfo(Model model){
 
-        //addUsernameInModel(model);
+        String email = addUsernameInModel(model);
 
-        //System.out.println(USER_EMAIL);
-        User user = userService.findByEmail("papado@yahoo.com");
+
+        User user = userService.findByEmail(email);
         //List<Repair> repairList = userService.findByUser(2);
         List<Repair> repairList = userService.findByUser(user);
 
-        model.addAttribute(REPAIR_DATA,repairList);
         model.addAttribute(USER,user);
+        model.addAttribute(REPAIR_DATA,repairList);
+
         return "userInfo";
     }
 
-    private void addUsernameInModel(Model model) {
+    private String addUsernameInModel(Model model) {
         Authentication auth =
                 SecurityContextHolder.getContext().getAuthentication();
 
         if (auth != null) {
             String email = (String) auth.getPrincipal();
+
             model.addAttribute(UserData, email);
+            return email;
         } else {
             model.addAttribute("errorMessage", "User not logged in anymore!");
+            return "";
         }
     }
 
