@@ -3,6 +3,7 @@ package com.example.CarRepair.Model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 public class NewRepairForm {
 
@@ -32,7 +33,7 @@ public class NewRepairForm {
      * Date date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
      */
     private String repairDate;
-    
+
     private String repairStatus;
 
     private String repairType;
