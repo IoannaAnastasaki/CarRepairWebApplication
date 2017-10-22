@@ -7,6 +7,9 @@
 </head>
 
 <body>
+    <h2>${message!""}</h2>
+    <h2>${errorMessage!""}</h2>
+
 	<div class="container">
         <form class="form-horizontal" role="form" action="/admin/createRepair" method="POST" id="newRepairForm" name="newRepairForm">
             <h2>Create Repair</h2>
@@ -18,34 +21,41 @@
                 </div>
 
             </div>
+          <div class="form-group">
+				<@spring.bind "newRepairForm.plateNumber"/>
+                <label for="name" class="col-sm-3 control-label">Vehicle plate number</label>
+                <div class="col-sm-9">
+                    <input type="text" name="plateNumber" id="plateNumber" placeholder="XXX-1000" class="form-control">
+                </div>
+
+            </div>
 			<div class="form-group">
-				<@spring.bind "newUserForm.description"/>
+				<@spring.bind "newRepairForm.description"/>
                 <label class="col-sm-3 control-label">Repair description</label>
 			    <div class="col-sm-9">
-                    <textarea class="form-control" rows="5" name="description" id="description" placeholder="Type your comment here"></textarea>
-
+			        <textarea class="form-control" rows="5" name="description" id="description" placeholder="Type your comment here"></textarea>
                 </div>
             </div>
 			<div class="form-group">
-                    <@spring.bind "newUserForm.repairDate"/>
+                    <@spring.bind "newRepairForm.repairDate"/>
                     <label class="col-sm-3 control-label">Date of repair</label>
                     <div class="col-sm-9">
                         <input type="date" name="repairDate" id="repairDate" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <@spring.bind "newUserForm.repairStatus"/>
+                    <@spring.bind "newRepairForm.repairStatus"/>
                     <label class="col-sm-3 control-label">Repair status</label>
                     <div class="col-sm-9">
                         <select name="repairStatus" id="repairStatus" class="form-control">
-                            <option name="repairStatus" value="pending">Pending</option>
+                            <option name="repairStatus" value="Pending">Pending</option>
                             <option name="repairStatus" value="InProgress">In progress</option>
                             <option name="repairStatus" value="Done">Done</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                   <@spring.bind "newUserForm.repairType"/>
+                   <@spring.bind "newRepairForm.repairType"/>
                     <label class="col-sm-3 control-label">Repair type</label>
                     <div class="col-sm-9">
                         <select name="repairType" id="repairType" class="form-control">
@@ -55,7 +65,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                  <@spring.bind "newUserForm.cost"/>
+                  <@spring.bind "newRepairForm.cost"/>
                   <label class="col-sm-3 control-label">Repair Cost</label>
                   <div class="col-sm-9">
                       <input type="text" name="cost" id="cost" placeholder="$$$" class="form-control">

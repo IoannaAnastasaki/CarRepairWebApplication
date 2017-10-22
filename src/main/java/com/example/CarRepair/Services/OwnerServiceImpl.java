@@ -2,8 +2,8 @@ package com.example.CarRepair.Services;
 
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Exceptions.UserExistException;
+import com.example.CarRepair.Exceptions.UserNotExistException;
 import com.example.CarRepair.Repositories.UserRepository;
-import com.example.CarRepair.Services.OwnerService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +21,17 @@ public class OwnerServiceImpl implements OwnerService {
         }
         else {
             retrievedUser = userRepository.save(user);
+        }
+    }
+
+    @Override
+    public User findByTaxNumber(Integer taxNumber) throws Exception{
+        User retrievedUser=userRepository.findByTaxNumber(taxNumber);
+        if (retrievedUser==null) {
+            throw new UserNotExistException("User Not already exist");
+        }
+        else {
+            return retrievedUser;
         }
     }
 }
