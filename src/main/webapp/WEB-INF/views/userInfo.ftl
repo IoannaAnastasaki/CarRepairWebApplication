@@ -6,8 +6,11 @@
 </head>
 <body>
 
-<#if name??>
-<h1> Welcome, ${name}</h1>
+<#if email??>
+<h1> Welcome, ${email}</h1>
+
+
+<p>  ${user.address}   {repairList[0].description}<p>
 
 <#else>
 <h1>How you came here</h1>
