@@ -4,9 +4,9 @@
 <html>
 <head>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<#--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<#--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>-->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin HomePage</title>
@@ -27,15 +27,15 @@
             <th>TaxNumber</th>
 
 
-
-
         <#list repairTop10 as repair>
             <tr>
-                <td>${repair.dayOfRepair}</td>
                 <td>${repair.description}</td>
+                <td>${repair.dayOfRepair}</td>
                 <td>${repair.repairStatus}</td>
                 <td>${repair.repairType}</td>
                 <td>${repair.serviceCost}</td>
+                <td>${repair.plateNumber}</td>
+                <td>${repair.taxNumber}</td>
             </tr>
         </#list>
 

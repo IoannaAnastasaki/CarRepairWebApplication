@@ -41,9 +41,9 @@ public class UpdateUserImpl implements UpdateUser {
 @Override
   public NewUserForm patchBookById(Long userID, NewUserForm userForm)
     {
-     User retrieveUser=userRepository.findByUserID(userID);
-     User updatedUser= UserFormToUserConverter.convert(userForm,retrieveUser);
-     return  UserToUserFormConverter.convert( userRepository.save(updatedUser));
+     User retrieveUser=userRepository.findOne(userID);
+     retrieveUser= UserFormToUserConverter.convert(userForm,retrieveUser);
+     return  UserToUserFormConverter.convert( userRepository.save(retrieveUser));
 
     }
 

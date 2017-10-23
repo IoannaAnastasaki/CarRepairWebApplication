@@ -2,6 +2,7 @@ package com.example.CarRepair.Repositories;
 
 import com.example.CarRepair.Domain.Repair;
 import com.example.CarRepair.Domain.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

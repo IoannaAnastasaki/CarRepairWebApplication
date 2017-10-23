@@ -21,12 +21,16 @@ public class RepairController
     private static final String REPAIR_lIST_TOP10_DATA = "repairTop10";
 
 
+    //edw dhmioyrgoyme th lista me formes repair row(kathe forma exei mia
+    //eggrafh gia repair.Syndew to ftl me th lista mesw tou model.
+    //Epistrefw auto to ftl wste na dw th selida m sto view
+
     @RequestMapping(value = "/admin/admH", method = RequestMethod.GET)
     public String repairListTop10(Model model)
     {
         List<RepairRow> serviceList = repairListImp.findTop10ByOrderByDayOfRepair();
         model.addAttribute(REPAIR_lIST_TOP10_DATA,serviceList);
-                return "admH";
+                return "admin/admH";
     }
 
 

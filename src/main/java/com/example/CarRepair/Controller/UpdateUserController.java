@@ -18,7 +18,7 @@ public class UpdateUserController
 
     //h forma pou exei auto to id sto ftl toy updateUser
     private static final String UPDATE_USER_FORM = "updateForm";
-
+    private static final String UPDATED_READY_USER_FORM = "updatedReadyUserForm";
     //bean toy service
     @Autowired
     UpdateUserImpl updateService;
@@ -28,27 +28,41 @@ public class UpdateUserController
     @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.GET)
     public String getUserData (@PathVariable Long userID,Model model)
 
-    {       //ginetai binding metaksu ftl kai ths formas pou tha parw kalwntas ayth th methodo apo to service
-            model.addAttribute(UPDATE_USER_FORM, updateService.findUser(userID));
+    {
+           NewUserForm userForm=updateService.findUser(userID);
+        //ginetai binding metaksu ftl kai ths formas pou tha parw kalwntas ayth th methodo apo to service
+            model.addAttribute(UPDATE_USER_FORM, userForm);
             //epistrefei to ftl me ta data ths formas
-            return "updateUser";
+            return "admin/updateUser"; /*redirect:/UpdateUser*/
 
     }
 
 
-    //epistrefei mia ananeomenh forma me ta updated stoixeia toy xrhsth(sto try)
-    //alliws vgazei to status tou Bad Request
-    @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.PATCH)
-    public ResponseEntity<NewUserForm> patchUser(@PathVariable("userID") Long id, @RequestBody NewUserForm userForm) {
-        try {
-            NewUserForm updatedUser = updateService.patchBookById(id, userForm);
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    //epistrefei mia ananeomenh forma me ta updated stoixeia toy xrhsth
+
+    @RequestMapping(value = "/admin/updatedReadyUser/{userID}", method = RequestMethod.POST)
+    public String UpdatedUser(@PathVariable Long userID,@PathVariable NewUserForm userForm, Model model)
+    {
+
+            NewUserForm updatedUser = updateService.patchBookById(userID, userForm);
+            model.addAttribute( UPDATED_READY_USER_FORM,updatedUser);
+            return "admin/updatedReadyUser";
     }
 
 
 
 
+
+
+
+//    @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.POST)
+//    public ResponseEntity<NewUserForm> patchUser(@PathVariable("userID") Long id, @RequestBody NewUserForm userForm) {
+//        try {
+//            NewUserForm updatedUser = updateService.patchBookById(id, userForm);
+//            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+//        } catch (Exception ex) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
+//
 }
