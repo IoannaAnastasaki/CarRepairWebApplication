@@ -1,5 +1,8 @@
 package com.example.CarRepair.Model;
 
+import com.example.CarRepair.Domain.User;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class RepairRow
@@ -9,7 +12,7 @@ public class RepairRow
 
 
     private String description;
-    private Date dayOfRepair;
+    private LocalDateTime dayOfRepair;
     private String repairStatus;
     private String repairType;
     private Double serviceCost;
@@ -35,11 +38,11 @@ public class RepairRow
         this.description = description;
     }
 
-    public Date getDayOfRepair() {
+    public LocalDateTime getDayOfRepair() {
         return dayOfRepair;
     }
 
-    public void setDayOfRepair(Date dayOfRepair) {
+    public void setDayOfRepair(LocalDateTime dayOfRepair) {
         this.dayOfRepair = dayOfRepair;
     }
 

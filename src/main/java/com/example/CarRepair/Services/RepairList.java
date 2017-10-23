@@ -1,6 +1,5 @@
 package com.example.CarRepair.Services;
 
-import com.example.CarRepair.Domain.Repair;
 import com.example.CarRepair.Model.RepairRow;
 
 import java.util.List;
