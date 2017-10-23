@@ -27,20 +27,34 @@
             <th>TaxNumber</th>
 
 
-            <c:forEach var="repairRow" items="${serviceList}">
-                <tr>
 
 
-                    <td>${repairRow.Description}</td>
-                    <td>${repairRow.Dayofrepair}</td>
-                    <td>${repairRow.Repairstatus}</td>
-                    <td>${repairRow.Repairtype}</td>
-                    <td>${repairRow.Servicecost}</td>
-                    <td>${repairRow.Platenumber}</td>
-                    <td>${repairRow.TaxNumber}</td>
+        <#list repairTop10 as repair>
+            <tr>
+                <td>${repair.dayOfRepair}</td>
+                <td>${repair.description}</td>
+                <td>${repair.repairStatus}</td>
+                <td>${repair.repairType}</td>
+                <td>${repair.serviceCost}</td>
+            </tr>
+        </#list>
 
-                </tr>
-            </c:forEach>
+            <#--<c:forEach var="repairRow" items="${serviceList}">-->
+                <#--<tr>-->
+
+
+                    <#--<td>${repairRow.Description}</td>-->
+                    <#--<td>${repairRow.Dayofrepair}</td>-->
+                    <#--<td>${repairRow.Repairstatus}</td>-->
+                    <#--<td>${repairRow.Repairtype}</td>-->
+                    <#--<td>${repairRow.Servicecost}</td>-->
+                    <#--<td>${repairRow.Platenumber}</td>-->
+                    <#--<td>${repairRow.TaxNumber}</td>-->
+
+                <#--</tr>-->
+            <#--</c:forEach>-->
+
+
         </table>
     </div>
 </body>
