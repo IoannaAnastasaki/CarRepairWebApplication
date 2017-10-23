@@ -1,7 +1,5 @@
 package com.example.CarRepair.Model;
 
-import com.example.CarRepair.Domain.User;
-
 import java.util.Date;
 
 public class RepairRow

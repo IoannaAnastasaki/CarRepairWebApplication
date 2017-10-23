@@ -1,42 +1,51 @@
 package com.example.CarRepair.Services;
-
+import com.example.CarRepair.Converter.UserFormToUserConverter;
+import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
-import com.example.CarRepair.Exceptions.UserExistException;
-import com.example.CarRepair.Repositories.RepairRepository;
+import com.example.CarRepair.Model.NewUserForm;
 import com.example.CarRepair.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.Optional;
 
-public class UpdateUserImpl
-{
+@Service
+public class UpdateUserImpl implements UpdateUser {
+
+
+
 
     @Autowired
-    private UserRepository userRepository;
-
-//auto logika den xreiazetai giati to kseroyme hdh apo to search
-
-    //kseroume oti o xrhsths uparxei
-    //ara mporoume apla na kanoyme update ola ta stoixeia t
-    //kai na ta valoyme sth thesi p htan analoga me to id
-    //mporoume na allaksoume to afm h to email(h kai ta 2)?
-    public void UpdateUser(User user) throws Exception {
-        User updateUser=userRepository.findByTaxNumberOrEmail(user.getTaxNumber(),user.getEmail());
-        if (updateUser==null) //user doesnt exist
-        {
-           //throw exception UserAlreadyExist();
-
-        }
-        else //user  exist
-            {
+    UserRepository userRepository;
 
 
+    //H methodos ayth einai gia to get tou update,dld gia th forma tou user
+    //pou tha vlepei o xrhsths molis pataei to link toy edit
+    //vriskei ena xrhsth meso ths id toy(apo to query sto repository) kai kalei ton katallhlo converter
+    //wste na perasei ta stoixeia toy sth forma poy exoume ftiaksei sto model(NewUserForm)
+    //auto p dld kanei return sthn ousia mesw tou converter einai mia userform
+
+    @Override
+    public NewUserForm findUser(Long userID)
+    {
+        User user = userRepository.findByUserID(userID);
+        return UserToUserFormConverter.convert(user);
+    }
 
 
-                // updateUser = userRepository.save(user);
-            }
+    //Ayth h methodos einai gia to patch.Vriskei ton xrhsth mesw tou id toy(kalontas to query apo to repository).
+    //Pairnei ta nea updated dedomena pou exei eisagei o xrhsths sth forma
+    //kai vazei ayta ta nea stoixeia sta pedia tou user p exoume,epistrefontas
+    //etsi thn ananeomenh ekdoxh toy,dld enan updatedUser.
+    //Telos auto p kanei return h synarthsh einai nea forma me ta updated stoixeia toy user
 
-
-
+@Override
+  public NewUserForm patchBookById(Long userID, NewUserForm userForm)
+    {
+     User retrieveUser=userRepository.findByUserID(userID);
+     User updatedUser= UserFormToUserConverter.convert(userForm,retrieveUser);
+     return  UserToUserFormConverter.convert( userRepository.save(updatedUser));
 
     }
+
 
 }
