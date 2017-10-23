@@ -16,8 +16,9 @@ import java.util.Collection;
 @Component
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private String ADMIN_SUCCESS_URL = "/admin/usermenu";
+    private String ADMIN_SUCCESS_URL = "/admin/admH";
     private String DEFAULT_SUCCESS_URL = "/userInfo";
+
 
 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
