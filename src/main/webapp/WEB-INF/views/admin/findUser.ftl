@@ -34,7 +34,7 @@
   <input class="btn btn-xs btn-danger" type="submit" value="Delete"/>
 
 <#else>
-    <h2> No User found </h2>
+        <h2> No User found </h2>
 </#if>
 
 </body>

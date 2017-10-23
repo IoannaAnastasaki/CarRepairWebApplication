@@ -3,6 +3,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,8 @@ import com.example.CarRepair.Domain.User;
 
 @Controller
 public class SearchUserController {
+
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(NewUserController.class);
     private static final String SEARCH_FORM = "searchUserForm";
     public static final String USER_DETAILS = "userForm";
 
@@ -38,15 +41,20 @@ public class SearchUserController {
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
         User user=null;
+        UserForm userDetail=null;
         try {
             user = userService.SearchUser(searchForm.getSearchInput());
             if (user == null) {
                 redirectAttributes.addFlashAttribute("errorMessage", "No user found");
-            }
-        }catch(Exception ex){
 
+            }
+        }catch(Exception exception){
+            //if an error occurs show it to the user
+            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+            logger.error("User creation failed: " + exception);
+            return "redirect:/admin/findUser";
         }
-        UserForm userDetail = UserToUserForm.TypeCastUser(user);
+        userDetail = UserToUserForm.TypeCastUser(user);
         redirectAttributes.addFlashAttribute(USER_DETAILS, userDetail);
         return "redirect:/admin/findUser";
     }
