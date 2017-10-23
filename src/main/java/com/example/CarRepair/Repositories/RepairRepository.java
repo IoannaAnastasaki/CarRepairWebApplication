@@ -13,10 +13,13 @@ import java.util.List;
 public interface RepairRepository extends CrudRepository<Repair,Long>{
     //description,userid,dayofrepair,repairstatus,repairtype,servicecost,platenumber
 
+
     Repair save(Repair repair);
     void delete(Repair repair);
+
+    //List<Repair> findByUser(Long userId);
+       List<Repair> findByUser(User user);
     List<Repair> findTop10ByOrderByDayOfRepair();
-    List<Repair> findByUser(User user);
     List<Repair> findByPlateNumber(String plateNumber);
     List<Repair> findBydayOfRepairBetween(Date dayOfRepair1, Date dayOfRepair2);
     List<Repair> findByDayOfRepair(Date dayOfRepair);
