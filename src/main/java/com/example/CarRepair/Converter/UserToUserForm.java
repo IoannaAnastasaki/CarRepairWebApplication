@@ -4,7 +4,7 @@ import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Model.UserForm;
 
 public class UserToUserForm {
-    public static UserForm buildUserObject(User user) {
+    public static UserForm TypeCastUser(User user) {
         UserForm userDetails = new UserForm();
 
         //get it field one by one, use try cause tax number is a number only
