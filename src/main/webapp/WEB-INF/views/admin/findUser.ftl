@@ -10,7 +10,7 @@
     <h2> Search For a User</h2>
     <div class="row">
         <div class="col-sm-4 col-sm-offset-8">
-            <form name="searchUserForm" action="/search" method="post">
+            <form name="searchUserForm" action="/admin/findUser" method="post">
                 <label> Email/Tax Number:</label><br>
                 <input type="text" name="searchInput" placeholder="email or password"/>
                 <input type="submit" value="Search">
