@@ -31,7 +31,9 @@ public class RepairConverter {
              * Date date = sdf.parse("Mon Mar 14 16:02:37 GMT 2011"));// all done
              * */
             // KAPOY EDW EXW KANEI TIN VLAKIA KAI DEN EINAI STRING TIPE H DATE TOU CALEDAR >.<
-            repair.setDayOfRepair(setExpireDate(createRepairForm.getRepairDate()));
+
+            repair.setDayOfRepair(createRepairForm.getRepairDate());
+
             if (createRepairForm.getRepairStatus().equals("Pending")){
                 repair.setRepairStatus("ToDo");
             }else{
@@ -53,13 +55,13 @@ public class RepairConverter {
 
     public static Date setExpireDate(String CalledarDate) {
         Date databaseDate;
-        String[] parts = CalledarDate.split("/");
+        String[] parts = CalledarDate.split("-");
         if (parts.length==3){
             try{
                 //Split the string in / so I take year month and day of month
-                int year=Integer.parseInt(parts[2]);
-                int month=Integer.parseInt(parts[0]);
-                int day=Integer.parseInt(parts[1]);
+                int year=Integer.parseInt(parts[0]);
+                int month=Integer.parseInt(parts[1]);
+                int day=Integer.parseInt(parts[2]);
                 //System.out.println("mera "+parts[0] +" minas "+parts[1]+" etos "+parts[2] );
                 databaseDate=new Date(year, month, day);
                 return databaseDate;

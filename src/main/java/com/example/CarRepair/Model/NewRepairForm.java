@@ -1,8 +1,11 @@
 package com.example.CarRepair.Model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class NewRepairForm {
@@ -32,7 +35,8 @@ public class NewRepairForm {
     /*String string = "2011-03-22";
      * Date date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
      */
-    private String repairDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime repairDate;
 
     private String repairStatus;
 
@@ -65,11 +69,11 @@ public class NewRepairForm {
         this.description = description;
     }
 
-    public String getRepairDate() {
+    public LocalDateTime getRepairDate() {
         return repairDate;
     }
 
-    public void setRepairDate(String repairDate) {
+    public void setRepairDate(LocalDateTime repairDate) {
         this.repairDate = repairDate;
     }
 

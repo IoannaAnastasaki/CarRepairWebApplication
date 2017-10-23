@@ -40,7 +40,7 @@
                     <@spring.bind "newRepairForm.repairDate"/>
                     <label class="col-sm-3 control-label">Date of repair</label>
                     <div class="col-sm-9">
-                        <input type="date" name="repairDate" id="repairDate" class="form-control">
+                        <input type="datetime-local" name="repairDate" id="repairDate" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
