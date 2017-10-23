@@ -18,6 +18,12 @@ public interface UserRepository extends CrudRepository<User,Long> {
     User findByTaxNumberOrEmail(Integer taxNumber, String email);
     User findByUserID(Long userID);
 
+
+
+
+
+
+
     void delete(User user);
    /* When we do save we do also update if our user is new it make a new one otherwise it update the existed
     public <S extends T> S save(S entity) {
