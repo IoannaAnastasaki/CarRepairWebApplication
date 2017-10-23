@@ -134,7 +134,6 @@ public class Repair implements Serializable {
                 this.plateNumber = plateNumber;
         }
 
-
         public User getUser() {
                 return user;
         }
