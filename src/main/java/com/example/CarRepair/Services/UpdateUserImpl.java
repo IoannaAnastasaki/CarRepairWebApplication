@@ -33,24 +33,29 @@ public class UpdateUserImpl implements UpdateUser {
     }
 
 
-    //Ayth h methodos einai gia to patch.Vriskei ton xrhsth mesw tou id toy(kalontas to query apo to repository).
-    //Pairnei ta nea updated dedomena pou exei eisagei o xrhsths sth forma
-    //kai vazei ayta ta nea stoixeia sta pedia tou user p exoume,epistrefontas
-    //etsi thn ananeomenh ekdoxh toy,dld enan updatedUser.
-    //Telos auto p kanei return h synarthsh einai nea forma me ta updated stoixeia toy user
+
 
 @Override
-  public User updateUserById(Long userID, NewUserForm userForm)
-    {
 
-     User retrieveUser=userRepository.findByUserID(userID);
-     retrieveUser= UserFormToUserConverter.convert(userForm,retrieveUser);
-     retrieveUser = userRepository.save(retrieveUser);
-     return retrieveUser;
+    public User UpdateUser(Long userID,NewUserForm userForm) throws Exception
+    {
+        //vriskw ton user apo to id toy
+        User retrievedUser=userRepository.findByUserID(userID);
+        if (retrievedUser==null)
+        {
+            throw new UserExistException("User is not exist");
+        }
+        else
+        {
+            //pairnw ta updated stoixeia apo th forma kai ta vazw ston User
+            retrievedUser= UserFormToUserConverter.convert(userForm,retrievedUser);
+            //apothikeuw ton user kai ftiaxnw antikeimeno me ta nea stoixeia tou
+            User updatedUser = userRepository.save(retrievedUser);
+            //epistrefw ton neo user
+            return updatedUser;
+        }
     }
 
-
-     // return  UserToUserFormConverter.convert( userRepository.save(retrieveUser));
 
     }
 

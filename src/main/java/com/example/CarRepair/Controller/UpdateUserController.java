@@ -1,5 +1,6 @@
 package com.example.CarRepair.Controller;
 
+import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Model.NewUserForm;
 import com.example.CarRepair.Services.UpdateUserImpl;
@@ -50,7 +51,7 @@ public class UpdateUserController {
     //epistrefei mia ananeomenh forma me ta updated stoixeia toy xrhsth
 
     @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.POST)
-    public String UpdatedUser(@Valid @ModelAttribute(UPDATED_READY_USER_FORM)
+    public String UpdatedUser(@Valid @ModelAttribute(UPDATE_USER_FORM)
                                NewUserForm userForm, BindingResult bindingResult, HttpSession session,
                               RedirectAttributes redirectAttributes, @PathVariable Long userID, Model model)
     {
@@ -64,9 +65,14 @@ public class UpdateUserController {
 
         try
         {
+            //dhmioyrgia mias neas formas.
+            //Pws ulopoieitai: Kat arxas pernaw ta updated stoixeia tou User me sygekrimeno ID sto Service
+            //Ayto m epistrefei enan updated User. Ta stoixeia autou tou User ta vazw se mia forma.
+            //Auth th forma epistrefw edw kai thn ekxwrw sthn userFomUpdated
+            //Meta thn eisagw sto model
+            NewUserForm userFormUpdated= UserToUserFormConverter.convert(updateService.UpdateUser(userID,userForm));
+            model.addAttribute(UPDATE_USER_FORM, userFormUpdated);
 
-            User updatedUser = updateService.updateUserById(userID, userForm);
-            model.addAttribute(UPDATED_READY_USER_FORM, userForm);
         }
         catch (Exception exception)
         {

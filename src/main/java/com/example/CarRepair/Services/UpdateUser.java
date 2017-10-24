@@ -8,7 +8,8 @@ import java.util.List;
 public interface UpdateUser
 {
 
-    User updateUserById(Long userID, NewUserForm userForm);
+  //  User updateUserById(Long userID, NewUserForm userForm);
+  User UpdateUser(Long userID,NewUserForm userForm) throws Exception;
     public NewUserForm findUser(Long userID);
 
 }
