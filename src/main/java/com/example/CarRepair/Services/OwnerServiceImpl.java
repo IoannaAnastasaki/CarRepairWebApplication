@@ -32,7 +32,7 @@ public class OwnerServiceImpl implements OwnerService {
     public User findByTaxNumber(Integer taxNumber) throws Exception{
         User retrievedUser=userRepository.findByTaxNumber(taxNumber);
         if (retrievedUser==null) {
-            throw new UserNotExistException("User Not already exist");
+            throw new UserNotExistException("User does not exist");
         }
         else {
             return retrievedUser;

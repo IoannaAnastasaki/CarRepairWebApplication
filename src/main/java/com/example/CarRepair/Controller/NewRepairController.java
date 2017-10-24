@@ -52,6 +52,10 @@ public class NewRepairController {
 
         try {
             User user = userService.findByTaxNumber(Integer.parseInt(CreateRepairForm.getTaxNumber()));
+            if (user==null){
+                redirectAttributes.addFlashAttribute("errorMessage", "User does not exist");
+                return "admin/createUser";
+            }
             Repair repair = RepairConverter.buildRepairObject(CreateRepairForm ,user);
             repairService.CreateRepair(repair);
 
@@ -59,11 +63,11 @@ public class NewRepairController {
             //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
             logger.error("User creation failed: " + exception);
-            return "redirect:/admin/createRepair";
+            return "redirect:/admin/createUser";
         }
 
 
-        redirectAttributes.addFlashAttribute("message", "You have sucessfully completed registration");
+        redirectAttributes.addFlashAttribute("message", "You have sucessfully create a repair");
         return "redirect:/admin/admH";
 
 
