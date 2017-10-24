@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <h1>User Information</h1>
-            <form action="/admin/updateUser/${updateForm.userID!""}" method="POST" name="updateForm" id="updateForm">
+            <form action="/admin/updateUser/${updateForm.userId!""}" method="POST" name="updateForm" id="updateForm">
 
                 <div class="form-group">
                     <label for="firstname">FirstName</label>
@@ -39,6 +39,11 @@
                     <input type="text" class="form-control" name="password"  value="${updateForm.password!""}" placeholder="password">
                 </div>
 
+
+                <div class="form-group">
+                    <label for="password">taxNumber</label>
+                    <input type="text" class="form-control" name="taxNumber"  value="${updateForm.taxNumber!""}" placeholder="taxNumber">
+                </div>
 
                 <div class="col-sm-4">
                     <input type="radio" name="type" value="${updateForm.type!""}"> Admin<br>

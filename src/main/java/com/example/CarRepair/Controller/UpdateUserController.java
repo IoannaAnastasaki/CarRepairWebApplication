@@ -4,6 +4,7 @@ import com.example.CarRepair.Converter.UserFormToUserConverter;
 import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Model.NewUserForm;
+import com.example.CarRepair.Model.UserUpdateForm;
 import com.example.CarRepair.Services.UpdateUserImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UpdateUserController {
     public String getUserData(@PathVariable Long userID, Model model)
 
     {
-        NewUserForm userForm = updateService.findUser(userID);
+        UserUpdateForm userForm = updateService.findUser(userID);
         //ginetai binding metaksu ftl kai ths formas pou tha parw kalwntas ayth th methodo apo to service
         model.addAttribute(UPDATE_USER_FORM, userForm);
         //epistrefei to ftl me ta data ths formas
@@ -51,7 +52,7 @@ public class UpdateUserController {
 
     @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.POST)
     public String UpdatedUser(@Valid @ModelAttribute(UPDATE_USER_FORM)
-                               NewUserForm userForm, BindingResult bindingResult, HttpSession session,
+                                          UserUpdateForm userForm, BindingResult bindingResult, HttpSession session,
                               RedirectAttributes redirectAttributes, @PathVariable Long userID, Model model)
     {
 
@@ -59,7 +60,7 @@ public class UpdateUserController {
         {
             //error handling
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
-            return "/admin/updateUser/{userID}";
+            return "/admin/updateUser/";
         }
 
         try
@@ -82,7 +83,7 @@ public class UpdateUserController {
         }
 
         redirectAttributes.addFlashAttribute("message", "You have sucessfully completed update functionality");
-        return "redirect:admin/admH";
+        return "redirect:/admin/admH";
 
     }
 

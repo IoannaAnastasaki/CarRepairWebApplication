@@ -3,6 +3,7 @@ package com.example.CarRepair.Converter;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Model.NewUserForm;
 import com.example.CarRepair.Model.UserRow;
+import com.example.CarRepair.Model.UserUpdateForm;
 import org.springframework.security.core.AuthenticationException;
 
 public class UserFormToUserConverter
@@ -11,7 +12,7 @@ public class UserFormToUserConverter
 
 //pairnei dedomena apo forma kai ta eisagei se enan xrhsth.Epistrefei ton xrhsth
 
-public static User convert(NewUserForm userForm,User retrieveUser)
+public static User convert(UserUpdateForm userForm, User retrieveUser)
 {
 
     retrieveUser.setFirstName(userForm.getFirstname());

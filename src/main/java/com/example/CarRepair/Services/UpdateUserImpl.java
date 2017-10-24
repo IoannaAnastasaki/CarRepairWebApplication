@@ -4,6 +4,7 @@ import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Exceptions.UserExistException;
 import com.example.CarRepair.Model.NewUserForm;
+import com.example.CarRepair.Model.UserUpdateForm;
 import com.example.CarRepair.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class UpdateUserImpl implements UpdateUser {
 
 
     @Override
-    public NewUserForm findUser(Long userID)
+    public UserUpdateForm findUser(Long userID)
     {
         User user = userRepository.findByUserID(userID);
         return UserToUserFormConverter.convert(user);
@@ -50,12 +51,8 @@ public class UpdateUserImpl implements UpdateUser {
     public void UpdateUser(User user) throws Exception
     {
         //vriskw ton user apo to id toy
-        if (user!=null) {
-            throw new UserExistException("User doesnt");
-        }
-        else {
+
             user=userRepository.save(user);
-        }
 
     }
 
