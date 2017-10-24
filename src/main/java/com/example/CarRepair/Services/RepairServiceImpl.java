@@ -37,18 +37,6 @@ public class RepairServiceImpl implements RepairService {
         List<Repair> repairsFound = new ArrayList<Repair>();
         //repairsFound=repairRepository.findAll();
         User userByTax;
-//        if(taxnumber.isEmpty()){
-//            try
-//            {
-//                Integer tax = Integer.parseInt(taxnumber);
-//                userByTax =userRepository.findByTaxNumber(tax);
-//                repairsFound=repairRepository.findByUserOrPlateNumberOrDayOfRepairBetween(userByTax,plateNumber,startDate,endDate);
-//
-//            }
-//            catch(NumberFormatException FormatEx) {
-//                System.out.println("Tax number must be a an integer");
-//            }
-//        }
         if((startDate!=null) && (endDate!=null) && (!taxnumber.isEmpty()) &&(!plateNumber.isEmpty()) ){
             try{
                 Integer tax = Integer.parseInt(taxnumber);
