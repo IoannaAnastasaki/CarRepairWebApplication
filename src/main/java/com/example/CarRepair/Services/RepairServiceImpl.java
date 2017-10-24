@@ -35,7 +35,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public List<RepairForm> SearchRepair(String taxnumber, String plateNumber, LocalDateTime startDate, LocalDateTime endDate)throws Exception{
         List<Repair> repairsFound = new ArrayList<Repair>();
-        repairsFound=repairRepository.findAll();
+        //repairsFound=repairRepository.findAll();
         User userByTax;
 //        if(taxnumber.isEmpty()){
 //            try
@@ -49,7 +49,26 @@ public class RepairServiceImpl implements RepairService {
 //                System.out.println("Tax number must be a an integer");
 //            }
 //        }
-        if(!taxnumber.isEmpty()){
+        if((startDate!=null) && (endDate!=null) && (!taxnumber.isEmpty()) &&(!plateNumber.isEmpty()) ){
+            try{
+                Integer tax = Integer.parseInt(taxnumber);
+                userByTax =userRepository.findByTaxNumber(tax);
+                repairsFound.addAll(repairRepository.findBydayOfRepairBetweenAndUserAndPlateNumber(startDate,endDate,userByTax,plateNumber));
+            }
+            catch(NumberFormatException FormatEx){
+                System.out.println("Tax number must be an integer");
+            }
+        }else if ((!taxnumber.isEmpty()) && (!plateNumber.isEmpty())){
+            try{
+                Integer tax = Integer.parseInt(taxnumber);
+                userByTax =userRepository.findByTaxNumber(tax);
+                repairsFound.addAll(repairRepository.findByUserAndPlateNumber(userByTax,plateNumber));
+            }
+            catch(NumberFormatException FormatEx){
+                System.out.println("Tax number must be an integer");
+            }
+        }
+        else if(!taxnumber.isEmpty()){
             try {
                 Integer tax = Integer.parseInt(taxnumber);
                 userByTax =userRepository.findByTaxNumber(tax);
@@ -59,11 +78,11 @@ public class RepairServiceImpl implements RepairService {
                 System.out.println("Tax number must be a an integer");
             }
         }
-        if (!plateNumber.isEmpty()){
+        else if (!plateNumber.isEmpty()){
             //repairsFound.addAll(repairRepository.findByPlateNumber(plateNumber));
             addAllIfNotNull(repairsFound,repairRepository.findByPlateNumber(plateNumber));
         }
-        if ((startDate!=null) && (endDate!=null)) {
+        else if ((startDate!=null) && (endDate!=null)) {
             //List<Repair> repairByDates=repairRepository.findBydayOfRepairBetween(inputData.getStartDate(),inputData.getEndDate());
             //repairsFound.addAll(repairRepository.findBydayOfRepairBetween(startDate,endDate));
             addAllIfNotNull(repairsFound,repairRepository.findBydayOfRepairBetween(startDate,endDate));
@@ -79,7 +98,7 @@ public class RepairServiceImpl implements RepairService {
         }
         if(repairsFound.isEmpty()){
             System.out.println("You can search a repair by tax number, plate number, or a set of dates");
-            throw new RepairSearchException("Repair can not found");
+            throw new RepairSearchException("Repair can not be found");
         }
         //return repairsFound;
 
