@@ -1,11 +1,17 @@
 package com.example.CarRepair.Model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class SearchRepairForm {
     private String taxNumber;
     private String plateNumber;
+    //If i have problem this might be LocalDateTime
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime startDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime endDate;
 
     public String getTaxNumber() {

@@ -62,7 +62,7 @@ public class NewRepairController {
         } catch (Exception exception) {
             //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-            logger.error("User creation failed: " + exception);
+            logger.error("Repair creation failed: " + exception);
             return "redirect:/admin/createUser";
         }
 
