@@ -45,7 +45,7 @@ public class SearchUserController {
         try {
             user = userService.SearchUser(searchForm.getSearchInput());
             if (user == null) {
-                redirectAttributes.addFlashAttribute("errorMessage", "No user found");
+                redirectAttributes.addFlashAttribute("errorMessage", "User Not Found");
 
             }
         }catch(Exception exception){

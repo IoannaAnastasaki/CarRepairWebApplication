@@ -46,6 +46,10 @@ public class NewUserController {
 
         try {
             User user = UserConverter.buildUserObject(CreateUserForm);
+            if (user == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", "User already exist");
+
+            }
             userService.CreateUser(user);
 
         } catch (Exception exception) {
