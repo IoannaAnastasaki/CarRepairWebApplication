@@ -26,6 +26,14 @@ public class UpdateUserImpl implements UpdateUser {
     //auto p dld kanei return sthn ousia mesw tou converter einai mia userform
 
     @Override
+    public User findOne(Long userID)
+    {
+        User user = userRepository.findByUserID(userID);
+        return user;
+    }
+
+
+    @Override
     public NewUserForm findUser(Long userID)
     {
         User user = userRepository.findByUserID(userID);
@@ -35,26 +43,52 @@ public class UpdateUserImpl implements UpdateUser {
 
 
 
+
+
 @Override
 
-    public User UpdateUser(Long userID,NewUserForm userForm) throws Exception
+    public void UpdateUser(User user) throws Exception
     {
         //vriskw ton user apo to id toy
-        User retrievedUser=userRepository.findByUserID(userID);
-        if (retrievedUser==null)
-        {
-            throw new UserExistException("User is not exist");
+        if (user!=null) {
+            throw new UserExistException("User doesnt");
         }
-        else
-        {
-            //pairnw ta updated stoixeia apo th forma kai ta vazw ston User
-            retrievedUser= UserFormToUserConverter.convert(userForm,retrievedUser);
-            //apothikeuw ton user kai ftiaxnw antikeimeno me ta nea stoixeia tou
-            User updatedUser = userRepository.save(retrievedUser);
-            //epistrefw ton neo user
-            return updatedUser;
+        else {
+            user=userRepository.save(user);
         }
+
     }
+
+
+
+
+
+
+
+
+
+
+
+//    public void UpdateUser(Long userID,NewUserForm userForm) throws Exception
+//    {
+//        //vriskw ton user apo to id toy
+//        User retrievedUser=userRepository.findByUserID(userID);
+//        if (retrievedUser==null)
+//        {
+//            throw new UserExistException("User is not exist");
+//        }
+//        else
+//        {
+//            //pairnw ta updated stoixeia apo th forma kai ta vazw ston User
+//            retrievedUser= UserFormToUserConverter.convert(userForm,retrievedUser);
+//            //apothikeuw ton user kai ftiaxnw antikeimeno me ta nea stoixeia tou
+//            User updatedUser = userRepository.save(retrievedUser);
+//            //epistrefw ton neo user
+//            //return updatedUser;
+//
+//        }
+//    }
+//
 
 
     }

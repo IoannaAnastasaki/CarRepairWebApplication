@@ -9,9 +9,9 @@ public interface UpdateUser
 {
 
   //  User updateUserById(Long userID, NewUserForm userForm);
-  User UpdateUser(Long userID,NewUserForm userForm) throws Exception;
+  void UpdateUser(User user) throws Exception;
     public NewUserForm findUser(Long userID);
-
+    public User findOne(Long userID);
 }
 
 

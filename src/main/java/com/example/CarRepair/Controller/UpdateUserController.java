@@ -1,5 +1,6 @@
 package com.example.CarRepair.Controller;
 
+import com.example.CarRepair.Converter.UserFormToUserConverter;
 import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
 import com.example.CarRepair.Model.NewUserForm;
@@ -63,15 +64,12 @@ public class UpdateUserController {
 
         try
         {
-            //dhmioyrgia mias neas formas.
-            //Pws ulopoieitai: Kat arxas pernaw ta updated stoixeia tou User me sygekrimeno ID sto Service
-            //Ayto m epistrefei enan updated User. Ta stoixeia autou tou User ta vazw se mia forma.
-            //Auth th forma epistrefw edw kai thn ekxwrw sthn userFomUpdated
-            //Meta thn eisagw sto model
+           //pernaei ta dedomena apo th forma se user me to id poy exoume dwsei
+            User updateUser= UserFormToUserConverter.convert(userForm,updateService.findOne(userID));
+           //apothikeuoyme ton updated user
+            updateService.UpdateUser(updateUser);
 
-            //dld mesa sthn convert pernaw san orisma ton updatedUser
-            NewUserForm userFormUpdated= UserToUserFormConverter.convert(updateService.UpdateUser(userID,userForm));
-            model.addAttribute(UPDATE_USER_FORM, userFormUpdated);
+
 
         }
         catch (Exception exception)
