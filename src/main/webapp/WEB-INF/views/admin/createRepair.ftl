@@ -10,7 +10,6 @@
     <#include "/navbar.ftl">
     <h2>${message!""}</h2>
     <h2>${errorMessage!""}</h2>
-
 	<div class="container">
         <form class="form-horizontal" role="form" action="/admin/createRepair" method="POST" id="newRepairForm" name="newRepairForm">
 
