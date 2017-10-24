@@ -50,7 +50,7 @@ public class NewUserController {
 
         } catch (Exception exception) {
             //if an error occurs show it to the user
-            redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+            redirectAttributes.addFlashAttribute("error", exception.getMessage());
             logger.error("User creation failed: " + exception);
             return "redirect:/admin/createUser";
         }

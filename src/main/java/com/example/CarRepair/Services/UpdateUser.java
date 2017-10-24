@@ -8,7 +8,7 @@ import java.util.List;
 public interface UpdateUser
 {
 
-    NewUserForm patchBookById(Long id, NewUserForm userForm);
+    User updateUserById(Long userID, NewUserForm userForm);
     public NewUserForm findUser(Long userID);
 
 }

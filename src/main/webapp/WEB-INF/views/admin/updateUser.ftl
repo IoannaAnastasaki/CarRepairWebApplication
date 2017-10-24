@@ -1,59 +1,71 @@
-<#--<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>-->
+
+<#import "/spring.ftl" as spring/>
+
 <html>
 <head>
-    <title>Spring MVC Form Handling</title>
+<title>Spring MVC Form Handling</title>
 </head>
 
 <body>
-<h2>User Information</h2>
-<form:form method = "POST" action = "/admin/updateUser/">
-    <table>
-        <tr>
-            <td><form:label path="userForm.firstName" >firstName</form:label></td>
-            <td><form:input path="userForm.firstName"  /></td>
-        </tr>
-        <tr>
-            <td><form:label path="userForm.lastName" >lastName</form:label></td>
-            <td><form:input path="userForm.lastName"  /></td>
-        </tr>
-        <tr>
-            <td><form:label path="userForm.address">address</form:label></td>
-            <td><form:input path="userForm.address" /></td>
-        </tr>
 
-        <tr>
-            <td><form:label path="userForm.taxNumber">taxNumber</form:label></td>
-            <td><form:input path="userForm.taxNumber" /></td>
-        </tr>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>User Information</h1>
+            <form action="/admin/updateUser/${updateForm.userID!""}" method="POST" name="updateForm" id="updateForm">
 
-        <tr>
-            <td><form:label path="userForm.email">email</form:label></td>
-            <td><form:input path="userForm.email"  /></td>
-        </tr>
+                <div class="form-group">
+                    <label for="firstname">FirstName</label>
+                    <input type="text" class="form-control" name="firstname"  value="${updateForm.firstname!""}" placeholder="firstname">
+                </div>
 
-        <tr>
-            <td><form:label path="userForm.userpassword" >userpassword</form:label></td>
-            <td><form:input path="userForm.userpassword"  /></td>
-        </tr>
+                <div class="form-group">
+                    <label for="lastname">LastName</label>
+                    <input type="text" class="form-control" name="lastname"  value="${updateForm.lastname!""}" placeholder="lastname">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address"  value="${updateForm.address!""}" placeholder="address">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="mail"  value="${updateForm.mail!""}" placeholder="mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Userpassword</label>
+                    <input type="text" class="form-control" name="password"  value="${updateForm.password!""}" placeholder="password">
+                </div>
 
 
-        <#--<tr>-->
-            <#--<td><form:label userForm.userpassword = "id">id</form:label></td>-->
-            <#--<td><form:radio userForm.userpassword = "id" /></td>-->
-        <#--</tr>-->
-        <#---->
-       <#--//<input type="radio" name="type" value="ADMIN"> Admin<br> -->
+                <div class="col-sm-4">
+                    <input type="radio" name="type" value="${updateForm.type!""}"> Admin<br>
+                    <input type="radio" name="type" value="${updateForm.type!""}"> User
 
-        <tr>
-            <td colspan = "2">
-                <input type = "submit" value = "Submit"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
-</body>
+                </div>
 
-</html>
+
+
+                <tr>
+                    <td colspan = "2">
+                        <input type = "submit" value = "Submit"/>
+                    </td>
+                </tr>
+                </table>
+
+            </form>
+
+        </body>
+        </html>
+
+
+
+
+
+<#--</form:form>-->
+
 
 
 

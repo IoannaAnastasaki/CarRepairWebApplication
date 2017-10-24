@@ -2,6 +2,7 @@ package com.example.CarRepair.Services;
 import com.example.CarRepair.Converter.UserFormToUserConverter;
 import com.example.CarRepair.Converter.UserToUserFormConverter;
 import com.example.CarRepair.Domain.User;
+import com.example.CarRepair.Exceptions.UserExistException;
 import com.example.CarRepair.Model.NewUserForm;
 import com.example.CarRepair.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +40,19 @@ public class UpdateUserImpl implements UpdateUser {
     //Telos auto p kanei return h synarthsh einai nea forma me ta updated stoixeia toy user
 
 @Override
-  public NewUserForm patchBookById(Long userID, NewUserForm userForm)
+  public User updateUserById(Long userID, NewUserForm userForm)
     {
-     User retrieveUser=userRepository.findOne(userID);
+
+     User retrieveUser=userRepository.findByUserID(userID);
      retrieveUser= UserFormToUserConverter.convert(userForm,retrieveUser);
-     return  UserToUserFormConverter.convert( userRepository.save(retrieveUser));
+     retrieveUser = userRepository.save(retrieveUser);
+     return retrieveUser;
+    }
+
+
+     // return  UserToUserFormConverter.convert( userRepository.save(retrieveUser));
 
     }
 
 
-}
+
