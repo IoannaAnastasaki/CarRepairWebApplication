@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<#include "/navbar.ftl">
 
 <div class="container">
     <h2> Search For a User</h2>
