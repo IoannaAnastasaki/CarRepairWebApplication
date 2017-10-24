@@ -20,20 +20,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Regeneration FirstTeam</a>
+            <a class="navbar-brand" href="#">Regeneration Car Repair</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
 
 
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="http://localhost:8080/owner/">Owner</a></li>
-                <li><a href="http://localhost:8080/service/">Service</a></li>
+                <li><span></span></li>
+                <li><a href="/admin/findUser"><span class="glyphicon glyphicon-search"></span> Users</a></li>
+                <li><a href="/admin/findRepair/"><span class="glyphicon glyphicon-search"></span> Repairs</a></li>
 
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8080/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a href="/admin/createUser"><span class="glyphicon glyphicon-plus"></span> Add User</a></li>
+                <li><a href="/admin/createRepair"><span class="glyphicon glyphicon-plus"></span> Add User Service</a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </div>

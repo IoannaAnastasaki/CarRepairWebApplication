@@ -6,27 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Regeneration Car Repair</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-
-                <!--Menu options --!>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://localhost:8080/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<#include "/userPageNavBar.ftl">
 
 <#if name??>
 <h1> Welcome, ${user.firstName} ${user.lastName}</h1>
