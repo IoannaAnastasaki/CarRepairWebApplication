@@ -46,8 +46,6 @@ public class UpdateUserController {
 
 
 
-
-
     //epistrefei mia ananeomenh forma me ta updated stoixeia toy xrhsth
 
     @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.POST)
@@ -70,6 +68,8 @@ public class UpdateUserController {
             //Ayto m epistrefei enan updated User. Ta stoixeia autou tou User ta vazw se mia forma.
             //Auth th forma epistrefw edw kai thn ekxwrw sthn userFomUpdated
             //Meta thn eisagw sto model
+
+            //dld mesa sthn convert pernaw san orisma ton updatedUser
             NewUserForm userFormUpdated= UserToUserFormConverter.convert(updateService.UpdateUser(userID,userForm));
             model.addAttribute(UPDATE_USER_FORM, userFormUpdated);
 
@@ -90,35 +90,4 @@ public class UpdateUserController {
 
 
 }
-
-
-
-
-
-
-
-//
-//        @RequestMapping(value = "/admin/updatedReadyUser/{userID}", method = RequestMethod.POST)
-//        public String UpdatedUser(@PathVariable Long userID,@PathVariable NewUserForm userForm, Model model)
-//        {
-//
-//            NewUserForm updatedUser = updateService.patchBookById(userID, userForm);
-//            model.addAttribute( UPDATED_READY_USER_FORM,updatedUser);
-//            return "admin/updatedReadyUser";
-//        }
-
-
-
-
-
-//    @RequestMapping(value = "/admin/updateUser/{userID}", method = RequestMethod.POST)
-//    public ResponseEntity<NewUserForm> patchUser(@PathVariable("userID") Long id, @RequestBody NewUserForm userForm) {
-//        try {
-//            NewUserForm updatedUser = updateService.patchBookById(id, userForm);
-//            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-//        } catch (Exception ex) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
-//
 
