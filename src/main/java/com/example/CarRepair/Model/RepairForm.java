@@ -1,34 +1,33 @@
 package com.example.CarRepair.Model;
 
-import com.example.CarRepair.Domain.User;
-
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class RepairRow
-{
-    // private Long userID;
-    //prepei na mpei?den uparxei to domain toy Repair
+public class RepairForm {
 
-
+    private String taxNumber;
+    private Long repairID;
     private String description;
     private LocalDateTime dayOfRepair;
     private String repairStatus;
     private String repairType;
-    private Double serviceCost;
+    private String repaierCost;
     private String plateNumber;
-    private Integer taxNumber;
 
-    public Integer getTaxNumber()
-    {
+    public String getTaxNumber() {
         return taxNumber;
     }
 
-    public void setTaxNumber(Integer taxNumber)
-    {
+    public void setTaxNumber(String taxNumber) {
         this.taxNumber = taxNumber;
     }
 
+    public Long getRepairID() {
+        return repairID;
+    }
+
+    public void setRepairID(Long repairID) {
+        this.repairID = repairID;
+    }
 
     public String getDescription() {
         return description;
@@ -62,12 +61,12 @@ public class RepairRow
         this.repairType = repairType;
     }
 
-    public Double getServiceCost() {
-        return serviceCost;
+    public String getRepaierCost() {
+        return repaierCost;
     }
 
-    public void setServiceCost(Double serviceCost) {
-        this.serviceCost = serviceCost;
+    public void setRepaierCost(String repaierCost) {
+        this.repaierCost = repaierCost;
     }
 
     public String getPlateNumber() {

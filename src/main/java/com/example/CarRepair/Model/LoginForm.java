@@ -6,10 +6,10 @@ public class LoginForm {
 
     private String password;
 
-    //getters setters
 
     public LoginForm() {
     }
+
     public LoginForm(String email, String password) {
         this.email = email;
         this.password = password;

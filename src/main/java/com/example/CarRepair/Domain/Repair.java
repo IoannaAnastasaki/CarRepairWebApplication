@@ -1,17 +1,16 @@
 package com.example.CarRepair.Domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.*;
 
-//The Repair Entity
 
 @Entity
 @Table(name = "repairs")
 public class Repair implements Serializable {
 
-        //columns of Repair Entity
-        //primary key autoincrement
+
         @Id
         @Column(name = "repairid", nullable = false)
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +22,7 @@ public class Repair implements Serializable {
 
 
         @Column(name = "dayofrepair")
-        private Date dayOfRepair;
+        private LocalDateTime dayOfRepair;
 
 
         @Column(name = "repairstatus", length =30)
@@ -39,21 +38,15 @@ public class Repair implements Serializable {
         @Column(name = "platenumber",length = 8)
         private String plateNumber;
 
-        //The relationship between entities
-        //one User->Many Repairs
-        //foreight key : UserID
         @ManyToOne(optional=false)
         @JoinColumn(name="userid",referencedColumnName="userid")
         private User user;
 
 
-        //Constructors
-
-
         public Repair() {
         }
 
-        public Repair(Long repairID, String description, Date dayOfRepair, String repairStatus, String repairType, Double serviceCost, String plateNumber) {
+        public Repair(Long repairID, String description, LocalDateTime dayOfRepair, String repairStatus, String repairType, Double serviceCost, String plateNumber) {
                 this.repairID = repairID;
                 this.description = description;
                 this.dayOfRepair = dayOfRepair;
@@ -63,7 +56,7 @@ public class Repair implements Serializable {
                 this.plateNumber = plateNumber;
         }
 
-        public Repair(Long repairID, String description, Date dayOfRepair, String repairStatus, String repairType, Double serviceCost, String plateNumber, User user) {
+        public Repair(Long repairID, String description, LocalDateTime dayOfRepair, String repairStatus, String repairType, Double serviceCost, String plateNumber, User user) {
                 this.repairID = repairID;
                 this.description = description;
                 this.dayOfRepair = dayOfRepair;
@@ -74,8 +67,6 @@ public class Repair implements Serializable {
                 this.user = user;
         }
 
-
-//Getters/Setters
 
         public Long getRepairID() {
                 return repairID;
@@ -93,11 +84,11 @@ public class Repair implements Serializable {
                 this.description = description;
         }
 
-        public Date getDayOfRepair() {
+        public LocalDateTime getDayOfRepair() {
                 return dayOfRepair;
         }
 
-        public void setDayOfRepair(Date dayOfRepair) {
+        public void setDayOfRepair(LocalDateTime dayOfRepair) {
                 this.dayOfRepair = dayOfRepair;
         }
 
@@ -133,7 +124,6 @@ public class Repair implements Serializable {
                 this.plateNumber = plateNumber;
         }
 
-
         public User getUser() {
                 return user;
         }
@@ -141,9 +131,6 @@ public class Repair implements Serializable {
         public void setUser(User user) {
                 this.user = user;
         }
-
-
-        //print all values of Repair Entity
 
 
         @Override
