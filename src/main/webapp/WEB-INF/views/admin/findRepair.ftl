@@ -10,10 +10,8 @@
     <div class="row">
         <div class="col-sm-4 col-sm-offset-8">
             <form name="searchRepairForm" action="/admin/findRepair" method="POST">
-                <label> Search by User:</label><br>
-                <input type="text" name="taxNumber" placeholder="Tax number"/></br>
-                <label> Search by Vehicle:</label><br>
-                <input type="text" name="plateNumber" placeholder="Plate number"/></br>
+                <label> Search by User or Vehicle:</label><br>
+                <input type="text" name="searchInput" placeholder="Tax or plate number"/></br>
                 <label class="col-sm-3 control-label">Start Date</label>
                 <div class="col-sm-9">
                     <input type="datetime-local" name="startDate" id="startDate" class="form-control">

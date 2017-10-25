@@ -23,8 +23,10 @@ public interface RepairRepository extends CrudRepository<Repair,Long>{
     List<Repair> findByPlateNumber(String plateNumber);
     //If there has been erro i make it LocalDateTime
     List<Repair> findBydayOfRepairBetween(LocalDateTime dayOfRepair1, LocalDateTime dayOfRepair2);
-    List<Repair> findBydayOfRepairBetweenAndUserAndPlateNumber(LocalDateTime dayOfRepair1, LocalDateTime dayOfRepair2,User user, String plateNumber);
+    List<Repair> findBydayOfRepairBetweenAndPlateNumber(LocalDateTime dayOfRepair1, LocalDateTime dayOfRepair2, String plateNumber);
     List<Repair> findByDayOfRepair(LocalDateTime dayOfRepair);
-    List<Repair> findByUserAndPlateNumber(User user,String plateNumber);
+    List<Repair> findByDayOfRepairAndPlateNumber(LocalDateTime dayOfRepair,String plateNumber);
+    List<Repair> findByDayOfRepairAndUser(LocalDateTime dayOfRepair,User user);
+    List<Repair> findBydayOfRepairBetweenAndUser(LocalDateTime dayOfRepair1, LocalDateTime dayOfRepair2, User user);
     List<Repair> findAll();
 }

@@ -6,28 +6,19 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class SearchRepairForm {
-    private String taxNumber;
-    private String plateNumber;
+    private String searchInput;
     //If i have problem this might be LocalDateTime
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime startDate;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime endDate;
 
-    public String getTaxNumber() {
-        return taxNumber;
+    public String getSearchInput() {
+        return searchInput;
     }
 
-    public void setTaxNumber(String taxNumber) {
-        this.taxNumber = taxNumber;
-    }
-
-    public String getPlateNumber() {
-        return plateNumber;
-    }
-
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
+    public void setSearchInput(String searchInput) {
+        this.searchInput = searchInput;
     }
 
     public LocalDateTime getStartDate() {

@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
@@ -33,45 +35,22 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public List<RepairForm> SearchRepair(String taxnumber, String plateNumber, LocalDateTime startDate, LocalDateTime endDate)throws Exception{
+    public List<RepairForm> SearchRepair(String searchInput, LocalDateTime startDate, LocalDateTime endDate)throws Exception{
         List<Repair> repairsFound = new ArrayList<Repair>();
-        //repairsFound=repairRepository.findAll();
-        User userByTax;
-        if((startDate!=null) && (endDate!=null) && (!taxnumber.isEmpty()) &&(!plateNumber.isEmpty()) ){
-            try{
-                Integer tax = Integer.parseInt(taxnumber);
-                userByTax =userRepository.findByTaxNumber(tax);
-                repairsFound.addAll(repairRepository.findBydayOfRepairBetweenAndUserAndPlateNumber(startDate,endDate,userByTax,plateNumber));
-            }
-            catch(NumberFormatException FormatEx){
-                System.out.println("Tax number must be an integer");
-            }
-        }else if ((!taxnumber.isEmpty()) && (!plateNumber.isEmpty())){
-            try{
-                Integer tax = Integer.parseInt(taxnumber);
-                userByTax =userRepository.findByTaxNumber(tax);
-                repairsFound.addAll(repairRepository.findByUserAndPlateNumber(userByTax,plateNumber));
-            }
-            catch(NumberFormatException FormatEx){
-                System.out.println("Tax number must be an integer");
-            }
+
+        Pattern platePattern =Pattern.compile("[A-Z][A-Z][A-Z]\\\\-[1-9][0-9][0-9][0-9]");
+        Pattern taxPattern= Pattern.compile("\\d\\d\\d\\d\\d\\d\\d\\d\\d");
+
+        Matcher plateMach=platePattern.matcher(searchInput);
+        Matcher taxMach=taxPattern.matcher(searchInput);
+
+        if(plateMach.find()){
+            addAllIfNotNull(repairsFound,findRepairsWithPlate(searchInput, startDate, endDate));
         }
-        else if(!taxnumber.isEmpty()){
-            try {
-                Integer tax = Integer.parseInt(taxnumber);
-                userByTax =userRepository.findByTaxNumber(tax);
-                //repairsFound.addAll(repairRepository.findByUser(userByTax));
-                addAllIfNotNull(repairsFound, repairRepository.findByUser(userByTax));
-            }catch(NumberFormatException FormatEx) {
-                System.out.println("Tax number must be a an integer");
-            }
-        }
-        else if (!plateNumber.isEmpty()){
-            //repairsFound.addAll(repairRepository.findByPlateNumber(plateNumber));
-            addAllIfNotNull(repairsFound,repairRepository.findByPlateNumber(plateNumber));
-        }
-        else if ((startDate!=null) && (endDate!=null)) {
-            //List<Repair> repairByDates=repairRepository.findBydayOfRepairBetween(inputData.getStartDate(),inputData.getEndDate());
+        else if(taxMach.find()){
+            addAllIfNotNull(repairsFound,findRepairsWithTax(searchInput, startDate, endDate));
+
+        } else if ((startDate!=null) && (endDate!=null)) {
             //repairsFound.addAll(repairRepository.findBydayOfRepairBetween(startDate,endDate));
             addAllIfNotNull(repairsFound,repairRepository.findBydayOfRepairBetween(startDate,endDate));
         }
@@ -84,11 +63,14 @@ public class RepairServiceImpl implements RepairService {
             addAllIfNotNull(repairsFound,repairRepository.findByDayOfRepair(endDate));
 
         }
+        else{
+            throw new RepairSearchException("You can search a repair by tax number, plate number, or a set of dates");
+        }
+
         if(repairsFound.isEmpty()){
             System.out.println("You can search a repair by tax number, plate number, or a set of dates");
             throw new RepairSearchException("Repair can not be found");
         }
-        //return repairsFound;
 
         return repairsFound
                 .stream()
@@ -96,21 +78,51 @@ public class RepairServiceImpl implements RepairService {
                 .collect(Collectors.toList());
     }
 
-    public static <E> void addAllIfNotNull(List<E> list, Collection<? extends E> c) {
+    private List<Repair> findRepairsWithPlate(String plate, LocalDateTime startDate, LocalDateTime endDate){
+        if ((startDate!=null) && (endDate!=null) && (!plate.isEmpty())){
+            return (repairRepository.findBydayOfRepairBetweenAndPlateNumber(startDate,endDate,plate));
+        }
+        else if((startDate!=null) && (endDate==null) && (!plate.isEmpty())){
+            return (repairRepository.findByDayOfRepairAndPlateNumber(startDate,plate));
+        }
+        else if((startDate==null) && (endDate!=null) && (!plate.isEmpty())){
+            return (repairRepository.findByDayOfRepairAndPlateNumber(endDate,plate));
+        }
+        else{
+            return(repairRepository.findByPlateNumber(plate));
+        }
+    }
+
+    private List<Repair> findRepairsWithTax(String taxnumber, LocalDateTime startDate, LocalDateTime endDate){
+        User userByTax;
+        try{
+            Integer tax = Integer.parseInt(taxnumber);
+            userByTax =userRepository.findByTaxNumber(tax);
+            if ((startDate!=null) && (endDate!=null) && (!taxnumber.isEmpty())){
+                return (repairRepository.findBydayOfRepairBetweenAndUser(startDate,endDate,userByTax));
+            }
+            else if((startDate!=null) && (endDate==null) && (!taxnumber.isEmpty())){
+                return (repairRepository.findByDayOfRepairAndUser(startDate,userByTax));
+            }
+            else if((startDate==null) && (endDate!=null) && (!taxnumber.isEmpty())){
+                return (repairRepository.findByDayOfRepairAndUser(endDate,userByTax));
+            }
+            else{
+                return(repairRepository.findByUser(userByTax));
+            }
+
+        }
+        catch(NumberFormatException FormatEx){
+            System.out.println("Tax number must be an integer");
+            return null;
+        }
+
+    }
+    private static <E> void addAllIfNotNull(List<E> list, Collection<? extends E> c) {
         if (c != null) {
             list.addAll(c);
         }
     }
-    public static <T> List<T> intersection(List<T> list1, List<T> list2) {
-        List<T> list = new ArrayList<T>();
 
-        for (T t : list1) {
-            if(list2.contains(t)) {
-                list.add(t);
-            }
-        }
-
-        return list;
-    }
 }
 

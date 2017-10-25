@@ -10,5 +10,5 @@ import java.util.List;
 public interface RepairService {
     void CreateRepair(Repair repair);
 
-    public List<RepairForm> SearchRepair(String taxnumber, String plateNumber, LocalDateTime startDate, LocalDateTime endDate)throws Exception;
+    public List<RepairForm> SearchRepair(String searchInput,LocalDateTime startDate, LocalDateTime endDate)throws Exception;
 }

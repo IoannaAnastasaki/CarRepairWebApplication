@@ -43,7 +43,7 @@ public class SearchRepairController {
                          RedirectAttributes redirectAttributes) {
         List<RepairForm> repairs;
         try {
-            repairs=repairService.SearchRepair(searchRepairForm.getTaxNumber(),searchRepairForm.getPlateNumber(),searchRepairForm.getStartDate(),searchRepairForm.getEndDate());
+            repairs=repairService.SearchRepair(searchRepairForm.getSearchInput(),searchRepairForm.getStartDate(),searchRepairForm.getEndDate());
             if (repairs.isEmpty()){
                 redirectAttributes.addFlashAttribute("errorMessage", "Repairs Not Found");
             }
