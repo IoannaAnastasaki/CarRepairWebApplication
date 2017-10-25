@@ -37,7 +37,7 @@
 
                 <div class="form-group">
                     <label for="plateNumber">Date of repair</label>
-                    <input type="datetime-local" class="form-control" name="repairDate"  value="${repairForm.repairDate!""}" placeholder="repairDate">
+                    <input type="datetime-local" class="form-control" name="repairDate"  value="${repairForm.repairDate?datetime("yyyy-MMM-dd  HH:mm:ss 'GMT'Z")?date!""}" placeholder="repairDate">
                 </div>
 
 
