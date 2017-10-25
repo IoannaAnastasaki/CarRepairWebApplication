@@ -43,7 +43,7 @@ public class Repair implements Serializable {
         //The relationship between entities
         //one User->Many Repairs
         //foreight key : UserID
-        @ManyToOne(optional=false)
+        @ManyToOne(optional=false, cascade = CascadeType.REMOVE)
         @JoinColumn(name="userid",referencedColumnName="userid")
 
         private User user;

@@ -72,17 +72,6 @@
                 </div>
             </form>
 
-            <form action="/admin/deleteRepair/${updateForm.repairId!""}" method="post">
-                <div class="btn-group" role="group">
-                <#--<button type="button" class="btn btn-default btn-sm"
-                        onclick="window.location.href='/admin/deleteUser/${updateForm.userId}'">Edit
-                </button>-->
-                <#--<button type="button" class="btn btn-default">Default</button>-->
-                    <button type="submit" class="btn btn-danger btn-sm" name="delete">
-                        Delete
-                    </button>
-                </div>
-            </form>
 
         </body>
         </html>
