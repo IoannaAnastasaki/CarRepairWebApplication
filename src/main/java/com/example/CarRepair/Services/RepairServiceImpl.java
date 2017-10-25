@@ -51,15 +51,12 @@ public class RepairServiceImpl implements RepairService {
             addAllIfNotNull(repairsFound,findRepairsWithTax(searchInput, startDate, endDate));
 
         } else if ((startDate!=null) && (endDate!=null)) {
-            //repairsFound.addAll(repairRepository.findBydayOfRepairBetween(startDate,endDate));
             addAllIfNotNull(repairsFound,repairRepository.findBydayOfRepairBetween(startDate,endDate));
         }
         else if  (startDate!=null){
-            //repairsFound.addAll(repairRepository.findByDayOfRepair(startDate));
             addAllIfNotNull(repairsFound,repairRepository.findByDayOfRepair(startDate));
         }
         else if (endDate!=null){
-            //repairsFound.addAll(repairRepository.findByDayOfRepair(endDate));
             addAllIfNotNull(repairsFound,repairRepository.findByDayOfRepair(endDate));
 
         }
