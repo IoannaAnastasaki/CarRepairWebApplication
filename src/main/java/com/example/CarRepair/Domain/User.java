@@ -35,7 +35,8 @@ public class User implements Serializable {
      * Also i mappedBy user that mean your field with annotation ManyToOne you name it user
      * and the Repair is the call I am connected so be the name of your class
      */
-    @OneToMany(mappedBy="user",targetEntity=Repair.class)
+//    @OneToMany(mappedBy="user",targetEntity=Repair.class)
+    @OneToMany(mappedBy = "user",targetEntity=Repair.class, cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<Repair> repairs;
     /****** I USE GENERIC TO MAKE THE CONSTRICTORS, GETTERS, SETTERS AND TO STRING ******/
     public User() {

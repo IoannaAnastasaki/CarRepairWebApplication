@@ -45,6 +45,7 @@ public class Repair implements Serializable {
         //foreight key : UserID
         @ManyToOne(optional=false)
         @JoinColumn(name="userid",referencedColumnName="userid")
+
         private User user;
 
 

@@ -19,13 +19,12 @@ public interface UserRepository extends CrudRepository<User,Long> {
     User findByTaxNumberOrEmail(Integer taxNumber, String email);
 
    // User findByUserID(Long userID);
-    User findByUserID(Long userID);
-   // List<User> findByUserID(Long userID);
+   User findByUserID(Long userID);
+
+
+    // List<User> findByUserID(Long userID);
 
    // Optional<User> findByUserID(Long id);
 
    // User findUser(Long userID);
-    void delete(User user);
-
-
 }
