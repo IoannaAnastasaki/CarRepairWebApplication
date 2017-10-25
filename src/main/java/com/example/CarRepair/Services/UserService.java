@@ -9,6 +9,5 @@ import java.util.List;
 public interface UserService {
 
     List<Repair> findByUser(User user);
-    //List<Repair> findByUser(long userId);
     User findByEmail(String email);
 }

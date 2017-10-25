@@ -45,7 +45,7 @@ public class NewRepairController {
                              BindingResult bindingResult, HttpSession session,
                              RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            //error handling
+
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
             return "admin/createRepair";
         }
@@ -60,9 +60,9 @@ public class NewRepairController {
             repairService.CreateRepair(repair);
 
         } catch (Exception exception) {
-            //if an error occurs show it to the user
+
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-            logger.error("User creation failed: " + exception);
+            logger.error("Repair creation failed: " + exception);
             return "redirect:/admin/createUser";
         }
 

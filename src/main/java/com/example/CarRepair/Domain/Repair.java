@@ -5,14 +5,12 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.*;
 
-//The Repair Entity
 
 @Entity
 @Table(name = "repairs")
 public class Repair implements Serializable {
 
-        //columns of Repair Entity
-        //primary key autoincrement
+
         @Id
         @Column(name = "repairid", nullable = false)
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,15 +38,9 @@ public class Repair implements Serializable {
         @Column(name = "platenumber",length = 8)
         private String plateNumber;
 
-        //The relationship between entities
-        //one User->Many Repairs
-        //foreight key : UserID
         @ManyToOne(optional=false)
         @JoinColumn(name="userid",referencedColumnName="userid")
         private User user;
-
-
-        //Constructors
 
 
         public Repair() {
@@ -75,8 +67,6 @@ public class Repair implements Serializable {
                 this.user = user;
         }
 
-
-//Getters/Setters
 
         public Long getRepairID() {
                 return repairID;
@@ -141,9 +131,6 @@ public class Repair implements Serializable {
         public void setUser(User user) {
                 this.user = user;
         }
-
-
-        //print all values of Repair Entity
 
 
         @Override

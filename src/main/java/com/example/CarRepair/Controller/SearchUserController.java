@@ -1,12 +1,8 @@
 package com.example.CarRepair.Controller;
-import java.util.List;
+
 import javax.servlet.http.HttpSession;
-
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +19,7 @@ import com.example.CarRepair.Domain.User;
 @Controller
 public class SearchUserController {
 
-    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(NewUserController.class);
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(SearchUserController.class);
     private static final String SEARCH_FORM = "searchUserForm";
     public static final String USER_DETAILS = "userForm";
 
@@ -49,21 +45,13 @@ public class SearchUserController {
 
             }
         }catch(Exception exception){
-            //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
-            logger.error("User creation failed: " + exception);
+            logger.error("Search User failed: " + exception);
             return "redirect:/admin/findUser";
         }
         userDetail = UserToUserForm.TypeCastUser(user);
         redirectAttributes.addFlashAttribute(USER_DETAILS, userDetail);
         return "redirect:/admin/findUser";
     }
-
-
-//    @RequestMapping(value = "/search/all", method = RequestMethod.GET)
-//    public ResponseEntity<List<UserForm>> search() {
-//        ResponseEntity responseEntity = new ResponseEntity(userService.findAll(), HttpStatus.OK);
-//        return responseEntity;
-//    }
 
 }

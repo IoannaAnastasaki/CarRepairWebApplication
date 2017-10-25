@@ -57,7 +57,7 @@ public class OwnerServiceImpl implements OwnerService {
             retrievedUser=userRepository.findByTaxNumber(taxNumber);
 
         }else{
-            System.out.println("User does not give ether email ether password");
+            System.out.println("User does not give ether email ether tax number");
             throw new UserNotExistException("User can be found by email or tax number");
         }
         if (retrievedUser==null) {

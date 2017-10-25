@@ -19,8 +19,6 @@ public class NewRepairForm {
 
     private static final String MONEY_PATTERN = "[0-9]+([.][0-9]{1,2})?";
 
-    //some field like tax number email and password must not be null by our database
-    //size gives us the max and min size so we check the size of our input
     @NotNull(message = "{newRepair.taxno.null}")
     @Pattern(regexp = TAX_PATTERN, message = "{newRepair.taxno.invalid}")
     @Size(min=TAXNO_SIZE, max=TAXNO_SIZE, message = "{newRepair.taxno.size}")
@@ -32,9 +30,6 @@ public class NewRepairForm {
 
     private String description;
 
-    /*String string = "2011-03-22";
-     * Date date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
-     */
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime repairDate;
 
