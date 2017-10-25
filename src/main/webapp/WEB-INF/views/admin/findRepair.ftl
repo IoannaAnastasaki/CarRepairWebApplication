@@ -1,10 +1,8 @@
 <html>
-
 <head>
-    <title>Repair</title>
 </head>
-
 <body>
+    <#include "/navbar.ftl">
 <div class="container">
     <h2> Search For Repairs</h2>
     <div class="row">
@@ -66,4 +64,5 @@
 </#if>
 
 </body>
+
 </html>
