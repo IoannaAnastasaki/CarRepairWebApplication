@@ -31,7 +31,7 @@ public class UserController {
 
 
         User user = userService.findByEmail(email);
-        //List<Repair> repairList = userService.findByUser(2);
+
         List<Repair> repairList = userService.findByUser(user);
 
         model.addAttribute(USER,user);

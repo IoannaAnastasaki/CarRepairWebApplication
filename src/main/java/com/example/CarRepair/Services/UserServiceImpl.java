@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
     public List<Repair> findByUser(User user) {
 
         return repairRepository.findByUser(user);
-        //return  repairRepository.findByUser(userId);
     }
 
     @Override

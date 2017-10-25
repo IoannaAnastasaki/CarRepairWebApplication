@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class SearchRepairForm {
     private String searchInput;
-    //If i have problem this might be LocalDateTime
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime startDate;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

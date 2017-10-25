@@ -7,7 +7,6 @@ public class UserToUserForm {
     public static UserForm TypeCastUser(User user) {
         UserForm userDetails = new UserForm();
 
-        //get it field one by one, use try cause tax number is a number only
         userDetails.setUserID(user.getUserID());
         userDetails.setTaxNumber(String.valueOf(user.getTaxNumber()));
         userDetails.setLastName(user.getLastName());

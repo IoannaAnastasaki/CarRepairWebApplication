@@ -5,14 +5,10 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-//Users is the name of my table in Database
 @Table(name = "users")
 public class User implements Serializable {
-    @Id //signifies the primary key
-    /*name is the name of column it reference, nullable is true by default if we want a field
-     *be always filled we put nullable false, with length we choose the size of out field it must be same with
-     *Database by default size is 255
-     */
+
+    @Id
     @Column(name = "userid", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
@@ -30,14 +26,10 @@ public class User implements Serializable {
     private String userpassword;
     @Column(name = "isadmin")
     private boolean isAdmin;
-    /**
-     * Because I want OneToMany I want a List, for ManyToOne you just need a simple User not a collection
-     * Also i mappedBy user that mean your field with annotation ManyToOne you name it user
-     * and the Repair is the call I am connected so be the name of your class
-     */
+
     @OneToMany(mappedBy="user",targetEntity=Repair.class)
     private List<Repair> repairs;
-    /****** I USE GENERIC TO MAKE THE CONSTRICTORS, GETTERS, SETTERS AND TO STRING ******/
+
     public User() {
     }
 

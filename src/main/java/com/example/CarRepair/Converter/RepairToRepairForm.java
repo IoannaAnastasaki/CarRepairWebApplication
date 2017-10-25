@@ -8,7 +8,6 @@ public class RepairToRepairForm {
     public static RepairForm TypeCastRepair (Repair repair) {
         RepairForm repairDetails = new RepairForm();
 
-        //get it field one by one, use try cause tax number is a number only
         repairDetails.setTaxNumber(String.valueOf(repair.getUser().getTaxNumber()));
         repairDetails.setRepairID(repair.getRepairID());
         repairDetails.setDescription(repair.getDescription());

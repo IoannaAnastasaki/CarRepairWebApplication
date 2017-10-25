@@ -45,7 +45,6 @@ public class SearchUserController {
 
             }
         }catch(Exception exception){
-            //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
             logger.error("Search User failed: " + exception);
             return "redirect:/admin/findUser";

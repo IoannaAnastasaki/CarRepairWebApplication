@@ -48,10 +48,10 @@ public class SearchRepairController {
                 redirectAttributes.addFlashAttribute("errorMessage", "Repairs Not Found");
             }
             redirectAttributes.addFlashAttribute(REPAIR_DETAILS, repairs);
-            //model.addAttribute(REPAIR_DETAILS,repairs);
+
 
         }catch(Exception exception){
-            //if an error occurs show it to the user
+
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
             logger.error("Search Repair Fail: " + exception);
             return "redirect:/admin/findRepair";
