@@ -11,6 +11,8 @@ public class NewUserForm {
 
     private static final String CHARACTERS_PATTERN = "^[a-zA-Z ]*$";
 
+    private static final String ADDRESS_PATTERN = "^[a-zA-Z0-9 ,]*$";
+
     private static final String MAIL_PATTERN = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$";
 
     private static final String TAX_PATTERN = "\\d\\d\\d\\d\\d\\d\\d\\d\\d";
@@ -32,7 +34,7 @@ public class NewUserForm {
     @Size(min=TAXNO_SIZE, max=TAXNO_SIZE, message = "{newUser.taxno.size}")
     private String taxNumber;
 
-
+    //@Pattern(regexp = ADDRESS_PATTERN, message = "{newUser.address.invalid}")
     private String address;
 
     @NotNull(message = "{newUser.mail.null}")

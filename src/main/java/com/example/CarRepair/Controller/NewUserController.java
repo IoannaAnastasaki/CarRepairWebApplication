@@ -39,7 +39,7 @@ public class NewUserController {
                              BindingResult bindingResult, HttpSession session,
                              RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-
+            //error handling
             logger.error(String.format("%s Validation Errors present: ", bindingResult.getErrorCount()));
             return "admin/createUser";
         }
@@ -53,7 +53,7 @@ public class NewUserController {
             userService.CreateUser(user);
 
         } catch (Exception exception) {
-
+            //if an error occurs show it to the user
             redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
             logger.error("User creation failed: " + exception);
             return "redirect:/admin/createUser";
