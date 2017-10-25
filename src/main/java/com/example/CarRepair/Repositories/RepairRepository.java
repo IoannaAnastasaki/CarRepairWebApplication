@@ -16,6 +16,8 @@ public interface RepairRepository extends CrudRepository<Repair,Long>{
 
     Repair save(Repair repair);
     void delete(Repair repair);
+
+    Repair findByRepairID(Long repairID);
     List<Repair> findTop10ByOrderByDayOfRepair();
     List<Repair> findByUser(User user);
     List<Repair> findByPlateNumber(String plateNumber);

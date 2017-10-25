@@ -1,14 +1,10 @@
 package com.example.CarRepair.Model;
 
-import com.example.CarRepair.Domain.User;
-
 import java.time.LocalDateTime;
-import java.util.Date;
 
-public class RepairRow
+public class RepairUpdateForm
 {
-    // private Long userID;
-    //prepei na mpei?den uparxei to domain toy Repair
+
 
 
     private String description;
@@ -18,7 +14,24 @@ public class RepairRow
     private Double serviceCost;
     private String plateNumber;
     private Integer taxNumber;
+    private Long userID;
+    private Long repairID;
 
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public Long getRepairID() {
+        return repairID;
+    }
+
+    public void setRepairID(Long repairID) {
+        this.repairID = repairID;
+    }
 
     public Integer getTaxNumber()
     {
