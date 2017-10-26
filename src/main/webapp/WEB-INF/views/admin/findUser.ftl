@@ -21,7 +21,7 @@
 <#if userForm??>
 
 <div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
+    <div class="row col-md-8 col-md-offset-1 custyle">
     <table class="table table-striped custab">
     <thead>
         <tr>
