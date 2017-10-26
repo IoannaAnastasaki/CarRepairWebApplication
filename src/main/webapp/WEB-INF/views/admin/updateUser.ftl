@@ -59,6 +59,34 @@
 
             </form>
 
+
+            <form action="/admin/deleteUser/${updateForm.userId!""}" method="post">
+                            <div class="btn-group" role="group" id="deleteUser">
+                            <#--<button type="button" class="btn btn-default btn-sm"
+                                    onclick="window.location.href='/admin/deleteUser/${updateForm.userId}'">Edit
+                            </button>-->
+                            <#--<button type="button" class="btn btn-default">Default</button>-->
+                                <button type="submit" class="btn btn-danger btn-sm" name="delete" onclick="myFunction()">
+                                    Delete
+                                </button>
+
+
+                                <p id="deleteUser"></p>
+
+                                <script>
+                                    function myFunction() {
+                                        var txt;
+                                        if (confirm("You are going to delete a user. Are you sure?") == true) {
+                                            return $deleteUser;
+                                        } else {
+                                            close();
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </form>
+
+
         </div>
     </div>
 </div>

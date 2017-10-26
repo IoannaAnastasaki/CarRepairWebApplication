@@ -38,7 +38,7 @@ public class Repair implements Serializable {
         @Column(name = "platenumber",length = 8)
         private String plateNumber;
 
-        @ManyToOne(optional=false)
+        @ManyToOne(optional=false, cascade = CascadeType.REMOVE)
         @JoinColumn(name="userid",referencedColumnName="userid")
         private User user;
 

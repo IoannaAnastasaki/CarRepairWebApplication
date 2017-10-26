@@ -30,13 +30,3 @@ public static User convert(UserUpdateForm userForm, User retrieveUser)
 
 }
 }
-//
-//    RepairRow repairRow = new RepairRow();
-//        repairRow.setDayOfRepair(repair.getDayOfRepair());
-//                repairRow.setDescription(repair.getDescription());
-//                repairRow.setPlateNumber(repair.getPlateNumber());
-//                repairRow.setRepairStatus(repair.getRepairStatus());
-//                repairRow.setServiceCost(repair.getServiceCost());
-//                repairRow.setRepairType(repair.getRepairType());
-//                repairRow.setTaxNumber(repair.getUser().getTaxNumber());
-//                return repairRow;
