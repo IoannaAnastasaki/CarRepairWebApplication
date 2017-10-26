@@ -21,6 +21,7 @@ public class UserController {
     private static final String REPAIR_DATA = "repairs";
     private static final String USER = "user";
 
+
     @Autowired
     private UserService userService;
 
@@ -31,8 +32,9 @@ public class UserController {
 
 
         User user = userService.findByEmail(email);
-
+        //List<Repair> repairList = userService.findByUser(2);
         List<Repair> repairList = userService.findByUser(user);
+
 
         model.addAttribute(USER,user);
         model.addAttribute(REPAIR_DATA,repairList);

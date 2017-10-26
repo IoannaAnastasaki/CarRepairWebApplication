@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>CrateUser Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
     <#include "/navbar.ftl">
+    <h1>Add a new user</h1>
     <h2>${message!""}</h2>
     <h2>${errorMessage!""}</h2>
 	<div class="container">
@@ -77,7 +79,7 @@
             </div> <!-- /.form-group -->
 			<div class="form-group">
 				<div class="col-sm-9 col-sm-offset-3">
-					<button type="submit" class="btn btn-primary btn-block">Create User</button>
+					<button type="submit" class="btn btn-primary btn-block">Save User</button>
 				</div>
 			</div>
         </form> <!-- /form -->
