@@ -58,17 +58,31 @@
 
             </form>
 
-            <form action="/admin/deleteRepair/${repairForm.repairID!""}" method="post">
-                <div class="btn-group" role="group">
-                <#--<button type="button" class="btn btn-default btn-sm"
-                        onclick="window.location.href='/admin/deleteUser/${updateForm.userId}'">Edit
-                </button>-->
-                <#--<button type="button" class="btn btn-default">Default</button>-->
-                    <button type="submit" class="btn btn-danger btn-sm" name="delete">
-                        Delete
-                    </button>
-                </div>
-            </form>
+           <form action="/admin/deleteRep/${repairForm.repairID!""}" method="post">
+                           <div class="btn-group" role="group" id="deleteRepair">
+
+                               <button type="submit" class="btn btn-danger btn-sm" name="delete" onclick="myFunction()">
+                                   Delete
+                               </button>
+
+
+                               <p id="deleteRepair"></p>
+
+                               <script>
+                                   function myFunction() {
+                                       var txt;
+                                       if (confirm("You are going to delete a service. Are you sure?") == true) {
+                                           return $deleteRepair;
+                                       } else {
+                                           close();
+                                       }
+                                   }
+                               </script>
+                           </div>
+                       </form>
+
+
+
 
 </body>
 </html>

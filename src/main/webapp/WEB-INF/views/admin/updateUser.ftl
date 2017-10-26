@@ -59,7 +59,6 @@
 
             </form>
 
-
             <form action="/admin/deleteUser/${updateForm.userId!""}" method="post">
                             <div class="btn-group" role="group" id="deleteUser">
                             <#--<button type="button" class="btn btn-default btn-sm"
