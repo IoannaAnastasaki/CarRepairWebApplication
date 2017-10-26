@@ -6,6 +6,9 @@ import com.example.CarRepair.Model.RepairRow;
 public class RepairListToRepairListConverter
 {
 
+    //ta stoixeia tou kathe Repair object ths listas ta
+    //topothetoume se antikeimeno formas repairRow
+
     public static RepairRow convert(Repair repair)
     {
         RepairRow repairRow = new RepairRow();

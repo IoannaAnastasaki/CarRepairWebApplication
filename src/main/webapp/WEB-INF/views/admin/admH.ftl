@@ -4,11 +4,9 @@
 <html>
 <head>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<#--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
 
-<#--<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"-->
-   <#--"http://www.w3.org/TR/html4/loose.dtd">-->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<#--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>-->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin HomePage</title>
@@ -19,7 +17,6 @@
 
         <table border="1">
 
-//description,userid,dayofrepair,repairstatus,repairtype,servicecost,platenumber
 
             <th>Description</th>
             <th>Dayofrepair</th>
@@ -30,20 +27,34 @@
             <th>TaxNumber</th>
 
 
-            <c:forEach var="repairRow" items="${serviceList}">
-                <tr>
+        <#list repairTop10 as repair>
+            <tr>
+                <td>${repair.description}</td>
+                <td>${repair.dayOfRepair}</td>
+                <td>${repair.repairStatus}</td>
+                <td>${repair.repairType}</td>
+                <td>${repair.serviceCost}</td>
+                <td>${repair.plateNumber}</td>
+                <td>${repair.taxNumber}</td>
+            </tr>
+        </#list>
+
+            <#--<c:forEach var="repairRow" items="${serviceList}">-->
+                <#--<tr>-->
 
 
-                    <td>${repairRow.Description}</td>
-                    <td>${repairRow.Dayofrepair}</td>
-                    <td>${repairRow.Repairstatus}</td>
-                    <td>${repairRow.Repairtype}</td>
-                    <td>${repairRow.Servicecost}</td>
-                    <td>${repairRow.Platenumber}</td>
-                    <td>${repairRow.TaxNumber}</td>
+                    <#--<td>${repairRow.Description}</td>-->
+                    <#--<td>${repairRow.Dayofrepair}</td>-->
+                    <#--<td>${repairRow.Repairstatus}</td>-->
+                    <#--<td>${repairRow.Repairtype}</td>-->
+                    <#--<td>${repairRow.Servicecost}</td>-->
+                    <#--<td>${repairRow.Platenumber}</td>-->
+                    <#--<td>${repairRow.TaxNumber}</td>-->
 
-                </tr>
-            </c:forEach>
+                <#--</tr>-->
+            <#--</c:forEach>-->
+
+
         </table>
     </div>
 </body>

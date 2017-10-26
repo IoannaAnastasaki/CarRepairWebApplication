@@ -116,7 +116,6 @@
 
 </#if>
 
-
 <h2>${errorMessage!""}</h2>
 <#if userForm??>
   <h3>Retrieved user:</h3>
