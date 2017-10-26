@@ -31,9 +31,8 @@
 <h2>${errorMessage!""}</h2>
 <#if repairs??>
 
-
-  <h3>Retrieved Repairs:</h3>
   <div class="row col-md-6 col-md-offset-2 custyle">
+      <label><h3>Retrieved Repairs:</h3></label>
       <table class="table table-striped custab">
      <tr>
         <th>User tax</th>

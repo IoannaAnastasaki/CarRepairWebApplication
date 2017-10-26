@@ -3,11 +3,15 @@
 
 <html>
 <head>
-    <title>Spring MVC Form Handling</title>
+   <title>Edit Page</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="/style.css">
+       <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 
 <body>
-
+<#include "/navbar.ftl">
 <div class="container">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
