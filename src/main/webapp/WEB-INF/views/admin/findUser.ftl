@@ -23,7 +23,7 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
-   
+
         <tr>
             <th>Tax Number</th>
             <th>Name</th>
