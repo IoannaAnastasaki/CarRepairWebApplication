@@ -18,13 +18,21 @@ public class RepairListImp implements RepairList
 {
 
  @Autowired
- RepairRepository repairRepository;
+    RepairRepository repairRepository;
+
+
+
+ //ekteloume to query na mas ferei ta top10 servises mesw bean toy repository
+ // ta vazoyme se mia lista poy exei repairs
+ //epistrefoume mia lista p exei repairRow mesa(dld lista se forma)
+ //to opoio exei ginei mesw mapping
+
 
  @Override
  public List<RepairRow> findTop10ByOrderByDayOfRepair()
  {
 
-     List <Repair> serviceList=repairRepository.findTop10ByOrderByDayOfRepair();
+     List<Repair> serviceList=repairRepository.findTop10ByOrderByDayOfRepair();
 
 
      return serviceList

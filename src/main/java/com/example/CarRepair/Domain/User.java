@@ -27,7 +27,7 @@ public class User implements Serializable {
     @Column(name = "isadmin")
     private boolean isAdmin;
 
-    @OneToMany(mappedBy="user",targetEntity=Repair.class)
+    @OneToMany(mappedBy = "user",targetEntity=Repair.class, cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<Repair> repairs;
 
     public User() {

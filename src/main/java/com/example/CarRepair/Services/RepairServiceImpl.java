@@ -38,7 +38,7 @@ public class RepairServiceImpl implements RepairService {
     public List<RepairForm> SearchRepair(String searchInput, LocalDateTime startDate, LocalDateTime endDate)throws Exception{
         List<Repair> repairsFound = new ArrayList<Repair>();
 
-        Pattern platePattern =Pattern.compile("[A-Z][A-Z][A-Z]\\\\-[1-9][0-9][0-9][0-9]");
+        Pattern platePattern =Pattern.compile("[A-Z][A-Z][A-Z]\\-\\d\\d\\d\\d");
         Pattern taxPattern= Pattern.compile("\\d\\d\\d\\d\\d\\d\\d\\d\\d");
 
         Matcher plateMach=platePattern.matcher(searchInput);

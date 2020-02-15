@@ -17,13 +17,13 @@
        </form>
     </div>
 <h2>${errorMessage!""}</h2>
-
 <#if userForm??>
 
 <div class="container">
-    <div class="row col-md-8 col-md-offset-1 custyle">
+    <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
+
         <tr>
             <th>Tax Number</th>
             <th>Name</th>
@@ -43,16 +43,13 @@
             <td>${userForm.email}</td>
             <td>${userForm.password}</td>
             <td>${userForm.type}</td>
-            <td class="text-center" >
-                <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a>
+            <td class="text-center">
+             <a class='btn btn-info btn-xs' href="/admin/updateUser/${userForm.userID}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
             </td>
         </tr>
     </table>
     </div>
 </div>
-
-
 
 </#if>
 </body>
